@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Tarefas.App.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Conexão com o banco
+builder.Services.AddDbContext<Context>(opcoes =>
+    opcoes.UseSqlite(builder.Configuration.GetConnectionString("ConexaoSQLite")));
+
+
 
 var app = builder.Build();
 
