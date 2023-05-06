@@ -4,11 +4,11 @@ using Tarefas.App.Data;
 
 namespace Tarefas.App.Controllers
 {
-    public class TaskController1 : Controller
+    public class TaskController : Controller
     {
         private readonly Context _context;
 
-        public TaskController1(Context context)
+        public TaskController(Context context)
         {
             _context = context;
         }
@@ -28,10 +28,10 @@ namespace Tarefas.App.Controllers
 
         // Inserir dados no banco
         [HttpPost]
-        public async Task<IActionResult> NovaTarefa(Task task)
+        public async Task<IActionResult> NovaTarefa(TaskModel tarefa)
         {
             // Passando a tarefa criada
-            await _context.Tarefas.AddAsync(task);
+            await _context.Tarefas.AddAsync(tarefa);
             // Salvando
             await _context.SaveChangesAsync();
 
