@@ -4,7 +4,7 @@ namespace Tarefas.App.Data
 {
     public class Context : DbContext
     {
-        public DbSet<Task> Tarefas { get; set; }
+        public DbSet<TaskModel> Tarefas { get; set; }
 
         public Context(DbContextOptions<Context> opcoes) : base(opcoes)
         {
@@ -13,7 +13,7 @@ namespace Tarefas.App.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Task>()
+            modelBuilder.Entity<TaskModel>()
                 .HasKey(t => t.Id)
                 .HasAnnotation("Sqlite:Autoincrement", true);
         }
