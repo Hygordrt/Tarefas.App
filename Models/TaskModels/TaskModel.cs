@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class Task
+public class TaskModel
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
