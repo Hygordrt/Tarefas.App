@@ -4,12 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 <p>
     <a asp-action="NovaTarefa" class="btn btn-success">Nova tarefa</a>
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
             <th>
@@ -34,9 +32,16 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsCompleted)
+                @if (item.IsCompleted)
+                {
+                     @Html.Raw("Tarefa concluída")
+                }
+                else
+                {
+                    @Html.Raw("Não concluída")
+                }
             </td>
-            <td>
+                <td class="d-flex">
                 <a asp-action="EditarTarefa" asp-route-Id="@item.Id" class="btn btn-primary">Editar</a> |
 
                 <form asp-action="DeletarTarefa" asp-route-Id="@item.Id">
@@ -47,3 +52,4 @@
 }
     </tbody>
 </table>
+
